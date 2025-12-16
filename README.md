@@ -10,6 +10,58 @@ O objetivo é facilitar a execução do projeto em qualquer ambiente, sem necess
 atencao: existe um script para inserir um usuario admin e cadastrar os cargos 
 ---
 
+
+--inseri cargos
+  INSERT INTO JobTitles (Id, Name, Department, IsActive) VALUES
+
+(NEWID(), 'Analista Financeiro', 1, 1),
+(NEWID(), 'Coordenador de Recursos Humanos', 4, 1),
+(NEWID(), 'Assistente Administrativo', 0, 1),
+(NEWID(), 'Gerente Comercial', 2, 1),
+(NEWID(), 'Diretor de Operações', 5, 1),
+(NEWID(),
+ 'Gerente',
+ 0,
+ 1);
+
+select * from JobTitles
+
+INSERT INTO Employees
+(
+    Id,
+    FirstName,
+    LastName,
+    Email,
+    DocNumber,
+    BirthDate,
+    Phone,
+    Role,
+    JobTitleId,
+    PasswordHash,
+    IsActive,
+    CreatedAt
+)
+VALUES
+(
+    NEWID(),
+    'Admin',
+    'Master',
+    'admin@teste.com',
+    '00000000000',
+    '1990-01-01',
+    '11999999999',
+    0,  -- ERole.Admin
+    'EE8E6BF4-23DF-4065-BFEC-DA444E76C067',  -- JobTitle Admin
+    'AQAAAAIAAYagAAAAEOwKRjSAG3FDkPgtQ2OpuM8vMyZDt2L3yvjVlCJn0hC3PL5l+tNfQjnq4z2TQGRcQ==', -- senha: Admin@123
+    1,
+    GETUTCDATE()
+);
+select * from Employees
+--DELETE FROM Employees
+
+
+---
+
 ## Tecnologias Utilizadas
 
 - .NET 8
